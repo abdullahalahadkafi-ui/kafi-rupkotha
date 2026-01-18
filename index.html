@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের ১ মাসের রূপকথা</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --accent: #f39c12; /* Sunset Orange */
+            --glass: rgba(255, 255, 255, 0.07);
+            --red-mute: rgba(231, 76, 60, 0.15);
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1414609145920-56da331776cc?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: #ecf0f1; -webkit-font-smoothing: antialiased; line-height: 1.6;
+        }
+
+        /* Password Entry Screen */
+        #pass-gate {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 10000;
+        }
+        #pass-gate h2 { font-weight: 300; color: #7f8c8d; }
+        #pass-gate input {
+            padding: 15px; border-radius: 30px; border: 1px solid #333;
+            background: #111; color: #fff; text-align: center;
+            font-size: 1.2rem; outline: none; margin-bottom: 20px; width: 200px;
+        }
+        #pass-gate button {
+            padding: 10px 40px; border-radius: 25px; border: none;
+            background: var(--accent); color: #000; font-weight: 700;
+            cursor: pointer; transition: 0.4s ease;
+        }
+        #pass-gate button:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+        /* Container and Cards */
+        .wrapper { max-width: 650px; margin: 0 auto; padding: 40px 20px; display: none; }
+        
+        header { text-align: center; margin-bottom: 60px; }
+        header h1 { font-size: 3rem; color: var(--accent); margin-bottom: 10px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .date-badge { 
+            font-weight: 700; color: var(--accent); letter-spacing: 1px;
+            background: rgba(243, 156, 18, 0.1); padding: 5px 20px; border-radius: 20px;
+        }
+
+        .card {
+            background: var(--glass); backdrop-filter: blur(15px);
+            margin-bottom: 25px; border-radius: 20px; padding: 30px;
+            border-left: 5px solid var(--accent); transition: 0.3s;
+        }
+        .card h2 { font-size: 1.4rem; color: var(--accent); margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        
+        /* Specialized Sections */
+        .apology { border-left-color: #e74c3c; background: var(--red-mute); }
+        .milestone { border: 2px solid var(--accent); border-left: 2px solid var(--accent); text-align: center; }
+        
+        .number { font-weight: 700; font-size: 1.1rem; color: var(--accent); text-shadow: 0 0 5px rgba(243,156,18,0.4); }
+
+        /* The Secret Dropbox (Noha's Section) */
+        .message-box {
+            background: rgba(0, 0, 0, 0.4); border-radius: 15px; padding: 20px; margin-top: 40px; text-align: center;
+            border: 1px dashed var(--accent);
+        }
+        .message-box textarea {
+            width: 90%; height: 100px; background: transparent; border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; border-radius: 10px; padding: 10px; margin-bottom: 15px; outline: none; font-family: inherit;
+        }
+        .message-box button {
+            background: #27ae60; color: white; border: none; padding: 8px 30px; border-radius: 20px; cursor: pointer;
+        }
+
+        /* Pulsing Secret Icon */
+        .pulse-container { text-align: center; margin: 40px 0; }
+        .heart-icon { font-size: 2.5rem; color: #e74c3c; animation: heartbeat 1.5s infinite; cursor: pointer; }
+        @keyframes heartbeat {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        footer { text-align: center; margin-top: 50px; opacity: 0.4; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div id="pass-gate">
+        <div style="font-size: 3rem; margin-bottom: 20px;">🔒</div>
+        <h2>সিক্রেট কোড প্রবেশ করুন...</h2>
+        <input type="password" id="entry-pass" placeholder="Date? (DDMM)">
+        <button onclick="checkPass()">ডকুমেন্টটি খুলুন</button>
+    </div>
+
+    <div class="wrapper" id="main-content">
+        <header>
+            <h1>রূপকথা...</h1>
+            <span class="date-badge">১৯ ডিসেম্বর ২৫ — ১৯ জানুয়ারি ২৬</span>
+        </header>
+
+        <div class="card">
+            <h2>কলিজার জন্য কিছু কথা</h2>
+            <p>নোহা, হয়তো আমি হাজারটা ভালোবাসার কথা সাজিয়ে বলতে পারি না। কিন্তু তুমি যেদিন আমায় দূরে সরিয়ে দিলে, আমি তখন বুঝেছি চট্টগ্রামের এই সমুদ্রের লোনা জলও আমার চোখের পানির মতো নোনতা নয়। আজ আমাদের <span class="number">১টি</span> মাস পূর্ণ হলো... নীরব এক রূপকথার ১ মাস।</p>
+        </div>
+
+        <div class="card apology">
+            <h2>ক্ষমা করো এই gাধা ভাইটাকে...</h2>
+            <p>আমি জানি গত সপ্তাহের ব্যবহার তোমার হদয়কে ব্যথিত করেছে। আমার শাসনের পেছনে লুকিয়ে থাকা অযোগ্য ভালোবাসা যদি তোমাকে কষ্ট দিয়ে থাকে, তবে দোহাই তোমার—কাফিকে ভুল বুঝো না। আমি হয়তো প্রকাশের ধরণ জানি না, কিন্তু তোমার সম্মান আগলে রাখাকেই আমার ইমানের পর শ্রেষ্ঠ নেয়ামত মানি।</p>
+        </div>
+
+        <div class="card">
+            <h2>কবজির অদৃশ্য স্মৃতি</h2>
+            <p>"ব্যথাটা তো সেদিনই হারিয়ে গেছে, কিন্তু হাতের ওপর তোমার দেওয়া সেই ছোট দাগটা আজ এক পরম <span class="highlight">রূপকথা</span> হয়ে আমার বেঁচে থাকার অংশ।" ১ বছর পরও ওটা আছে, কারণ ওটা কেবল চর্মের ওপর কোনো দাগ নয়, হৃদয়ে তোমার খোদাই করা নাম।</p>
+        </div>
+
+        <div class="pulse-container">
+            <div class="heart-icon">❤️</div>
+            <p style="font-size: 0.8rem; opacity: 0.6;">আমাদের ২১ ডিসেম্বরের ফিতার বন্ধন...</p>
+        </div>
+
+        <div class="card">
+            <h2>উপহারের কোণ</h2>
+            <p>চট্টগ্রামের বইপাড়া ঘুরে তোমার সেই প্রিয় <span class="number">৫ জানুয়ারির</span> জন্য উপহারগুলো জমিয়ে রেখেছি। 'কিশোরকণ্ঠ', 'আমরা বড় হতে চাই' এবং একটি স্বপ্নের ডায়েরি তোমার আনব্লকের ইশারার অপেক্ষায়। তুমি বড় হওয়া মানেই তো আমার এই ছোট্ট দুনিয়ার স্বপ্ন জেতা!</p>
+        </div>
+
+        <div class="card milestone">
+            <h2>মিশন: ১৯ জানুয়ারি ২৬</h2>
+            <p>আজকের সূর্য ডোবার আগে লোহাগাড়া থেকে চট্টগ্রামের এই নীরবতা ভাঙবে তো? ব্লকিং লিস্টের ওই নীরব দেওয়াল আমাদের ভাত খাওয়ানোর মায়ার চেয়ে কখনোই শক্ত হতে পারে না। আমি অপেক্ষায় আছি...</p>
+        </div>
+
+        <!-- Silent Message Box -->
+        <div class="message-box">
+            <h3 style="color: var(--accent); margin-top: 0;">তুমি কিছু লিখতে চাও?</h3>
+            <p style="font-size: 0.8rem; opacity: 0.6;">(এখানে যা লিখবে তা কেবল আমাদের মাঝেই আমানত থাকবে)</p>
+            <textarea id="nohaMsg" placeholder="তোমার মনে জমা অভিমানগুলো লিখে ফেলো..."></textarea>
+            <br>
+            <button onclick="saveMsg()">জমা দিন</button>
+            <p id="msgResponse" style="display: none; color: #2ecc71; margin-top: 10px;">তোমার শব্দগুলো আমার ডায়েরিতে সেভ হয়ে রইল। ❤️</p>
+        </div>
+
+        <footer>
+            Sabr & Dua | Prayer for the Eternal Bond<br>
+            Managed with heart by Kafi Ahad.
+        </footer>
+    </div>
+
+<!-- আপনার HTML এর আগের সব কিছু থাকবে এখানে -->
+
+    <script>
+        function checkPass() {
+            var pass = document.getElementById("entry-pass").value;
+            if (pass == "1912") {
+                document.getElementById("pass-gate").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            } else {
+                alert("ভুল কোড! (hint: ১৯ ডিসেম্বর)");
+            }
+        }
+
+        // এটিই হলো আপনার সেই নতুন JavaScript কোড যা পাইথনের সাথে যোগাযোগ করবে
+        async function saveMsg() {
+            let msgInput = document.getElementById("nohaMsg").value;
+            let submitBtn = document.querySelector(".message-box button");
+
+            if (msgInput.length > 3) {
+                submitBtn.innerText = "পাঠানো হচ্ছে...";
+                submitBtn.disabled = true;
+
+                try {
+                    // নিচের লিঙ্কে আপনার রেন্ডারের অরিজিনাল লিঙ্কটি বসাবেন
+                    const response = await fetch('https://আপনার-অ্যাপ-লিঙ্ক.onrender.com/send-message', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: msgInput })
+                    });
+
+                    if (response.ok) {
+                        document.getElementById("nohaMsg").value = "";
+                        document.getElementById("msgResponse").style.display = "block";
+                        submitBtn.innerText = "জমা দিন";
+                    } else {
+                        alert("সার্ভারে সমস্যা হচ্ছে, ইমেইল যায়নি!");
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "জমা দিন";
+                    }
+                } catch (error) {
+                    alert("নেট কানেকশনে সমস্যা হচ্ছে!");
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "জমা দিন";
+                }
+            } else {
+                alert("আরেকটু গভীরে গিয়ে লিখো...");
+            }
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
