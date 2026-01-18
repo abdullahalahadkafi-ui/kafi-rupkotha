@@ -40,12 +40,14 @@ def send_email():
         </html>
         """
 
-        # SMTP কনফিগারেশন
-        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        try:
+        # ৫বিভাগের এই নতুন কানেকশন কোডটি ব্যবহার করুন
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls() # নিরাপত্তা বাড়াবে
         server.login(sender_email, app_password)
         
         email_msg = MIMEMultipart()
-        email_msg['Subject'] = "নোহার একটি বার্তা সংরক্ষিত হয়েছে..."
+        email_msg['Subject'] = f"কলিজার বার্তা - ১৯ জানুয়ারি ❤️"
         email_msg['From'] = sender_email
         email_msg['To'] = receiver_email
         email_msg.attach(MIMEText(html_template, 'html'))
@@ -53,10 +55,3 @@ def send_email():
         server.send_message(email_msg)
         server.quit()
         return jsonify({"status": "success"}), 200
-    except Exception as e:
-        print(f"Error: {str(e)}")
-        return jsonify({"status": "error", "message": str(e)}), 500
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000)) # পোর্ট খুঁজে নেওয়ার জন্য
-    app.run(host='0.0.0.0', port=port) # হোস্ট ০.০.০.০ রাখা বাধ্যতামূলক
