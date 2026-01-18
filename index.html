@@ -11,175 +11,147 @@
             --bg-color: #0b0e14;
             --accent-color: #f39c12; /* Sunset Orange */
             --text-main: #ecf0f1;
-            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.08);
         }
-
-/* বিশেষভাবে সংখ্যার স্পষ্টতা বাড়ানোর জন্য */
-.date-range, h1 {
-    font-weight: 700; /* সংখ্যা ও শিরোনাম একটু বোল্ড করুন */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* এতে সংখ্যা ফুটে উঠবে */
-}
-
-p {
-    font-weight: 500; /* টেক্সটকেও মিডিয়াম ওয়েট দিন */
-    letter-spacing: 0.3px; /* একটু গ্যাপ দিলে পড়তে সুবিধা হবে */
-}
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image: url('https://images.unsplash.com/photo-1414609145920-56da331776cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); /* সূর্যাস্তের থিম */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1414609145920-56da331776cc?q=80&w=2000&auto=format&fit=crop');
             background-attachment: fixed;
             background-size: cover;
-            background-blend-mode: overlay;
+            background-position: center;
+            color: var(--text-main);
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-        }
-        .pass-gate h2{
-            color: #ffff;
+            text-align: center; /* সব টেক্সট সেন্টারে রাখার জন্য */
         }
 
-        /* Password Overlay */
+        /* Password Entry */
         #pass-gate {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            z-index: 9999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 10000;
         }
-
+        #pass-gate h2 { color: #fff; font-weight: 300; margin-bottom: 25px; }
         #pass-gate input {
-            padding: 15px; border-radius: 25px; border: none;
-            background: #222; color: #fff; text-align: center;
-            font-size: 1.2rem; outline: none; margin-bottom: 20px;
+            padding: 15px; border-radius: 30px; border: 1px solid #333;
+            background: #111; color: #fff; text-align: center;
+            font-size: 1.3rem; outline: none; margin-bottom: 20px; width: 220px;
         }
-
         #pass-gate button {
-            padding: 10px 30px; border-radius: 20px; border: none;
-            background: var(--accent-color); color: #000; font-weight: bold;
-            cursor: pointer; transition: 0.3s;
+            padding: 12px 50px; border-radius: 25px; border: none;
+            background: var(--accent-color); color: #000; font-weight: 700;
+            cursor: pointer; transition: 0.3s ease;
         }
 
-        /* Main Content Wrapper */
-        .wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            display: none;
-            animation: fadeIn 2s ease-in-out forwards;
+        /* Content Container */
+        .wrapper { max-width: 650px; margin: 0 auto; padding: 40px 20px; display: none; }
+        
+        header { margin-bottom: 60px; }
+        header h1 { 
+            font-size: 3.2rem; color: var(--accent-color); margin-bottom: 10px; 
+            font-weight: 700; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); 
+        }
+        .date-range { 
+            font-size: 1.3rem; font-weight: 700; color: #fff; letter-spacing: 1px;
+            background: rgba(243, 156, 18, 0.15); padding: 8px 30px; border-radius: 30px; display: inline-block;
         }
 
-        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-
-        header {
-            text-align: center;
-            padding: 100px 0 50px;
-        }
-
-        h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--accent-color); }
-        .date-range { font-size: 1.1rem; opacity: 0.8; letter-spacing: 2px; }
-
+        /* Shared Card Style */
         .memory-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 4px solid var(--accent-color);
-            margin-bottom: 30px;
+            background: var(--glass-bg); backdrop-filter: blur(15px);
+            margin-bottom: 30px; border-radius: 25px; padding: 35px;
+            border-bottom: 3px solid var(--accent-color); 
+            transition: 0.3s; text-align: left; /* কার্ডের ভেতর লেখা বামে রাখার জন্য */
         }
+        .memory-card h2 { 
+            font-size: 1.5rem; color: var(--accent-color); margin-top: 0; 
+            text-align: center; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        .memory-card p { font-size: 1.15rem; line-height: 1.8; color: #dfe6e9; font-weight: 400; }
 
-        h2 { font-size: 1.3rem; margin-top: 0; color: var(--accent-color); }
-        p { line-height: 1.7; font-size: 1rem; }
+        /* Specific Highlighted Card */
+        .apology { border-bottom-color: #e74c3c; background: rgba(231, 76, 60, 0.1); }
+        .highlight { color: var(--accent-color); font-weight: 700; }
+        
+        /* Clear Numbers Style */
+        .number { 
+            font-weight: 700; color: var(--accent-color); font-size: 1.2rem;
+            text-shadow: 0 0 5px rgba(243,156,18,0.5); 
+        }
 
         .mark-box {
-            text-align: center;
-            padding: 20px;
-            border: 1px dashed rgba(255,255,255,0.2);
-            border-radius: 50% / 10%;
+            text-align: center; padding: 25px;
+            border: 1px dashed rgba(255,255,255,0.3); border-radius: 50% / 10%; margin: 20px 0;
         }
 
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
+        .heart-pulse { font-size: 3rem; color: #e74c3c; animation: heartbeat 1.5s infinite; margin: 40px 0; }
+        @keyframes heartbeat { 0%, 100% {transform: scale(1);} 50% {transform: scale(1.2);} }
 
-        .highlight { color: var(--accent-color); font-weight: bold; }
+        footer { text-align: center; padding: 50px 0; font-size: 0.95rem; opacity: 0.5; letter-spacing: 1px; }
 
+        @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+        .wrapper { animation: fadeIn 1.5s ease-out forwards; }
     </style>
 </head>
 <body>
 
-    <!-- Password Screen -->
     <div id="pass-gate">
-        <div style="font-size: 3.5rem; margin-bottom: 25px;">⏳</div>
-        <h2>এক মাসের মায়া খুলতে কোড দিন...</h2>
+        <div style="font-size: 4rem; margin-bottom: 20px;">⏳</div>
+        <h2>সিক্রেট কোড প্রবেশ করুন...</h2>
         <input type="password" id="entry-pass" placeholder="Password">
-        <button onclick="checkPass()">Unveil Memory</button>
+        <button onclick="checkPass()">অপেক্ষা শেষ করুন</button>
     </div>
 
-    <!-- Main Secret Land -->
     <div class="wrapper" id="main-content">
         <header>
             <h1>রূপকথা...</h1>
-            <div class="date-range">১৯ ডিসেম্বর — ১৯ জানুয়ারি</div>
+            <div class="date-range"><span class="number">১৯</span> ডিসেম্বর — <span class="number">১৯</span> জানুয়ারি</div>
         </header>
 
-        <!-- Intro -->
         <div class="memory-card">
-            <h2>কলিজার জন্য কিছু কথা,</h2>
-            <p>নোহা, হয়তো আমি হাজারটা ভালোবাসার কথা সাজিয়ে বলতে পারি না। কিন্তু তুমি যেদিন ব্লক করে সাজা দিয়ে দূরে সরিয়ে দিলে, আমি তখন প্রতিটি সেকেন্ড এই কোডিং আর ডায়েরির পাতার আড়ালে তোমায় আগলে রেখেছিলাম। আজ আমাদের সম্পর্কের ১টি মাস পূর্ণ হলো... এক অদ্ভুত বিরহের পূর্ণতা।</p>
+            <h2>কলিজার জন্য কিছু কথা</h2>
+            <p>নোহা, হয়তো আমি হাজারটা ভালোবাসার কথা সাজিয়ে বলতে পারি না। কিন্তু তুমি যেদিন ব্লক করে সাজা দিয়ে দূরে সরিয়ে দিলে, আমি তখন বুঝেছি চট্টগ্রামের এই সমুদ্রের লোনা জলও আমার চোখের পানির মতো নোনতা নয়। আজ আমাদের <span class="number">১টি</span> মাস পূর্ণ হলো... এক অদ্ভুত বিরহের পূর্ণতা।</p>
         </div>
 
-        <!-- Intro -->
-        <div class="memory-card">
-            <h2>কলিজার কাছে ক্ষমা...</h2>
-            <p>নোহা, আমি জানি গত সপ্তাহে আমার পাগলামিগুলো তোমাকে রক্তাক্ত করেছে। অযোগ্য হয়ে তোমার ওপর করা সেই শাসন বা ভুল বুঝাবুঝি আমার বুকটাকে আজও চিরে ফেলে। তুমি আঘাত পেয়েছো জেনে লোহাগাড়ার ওই রাতের চেয়েও চট্টগ্রামে আমার প্রতিটি নিঃশ্বাস ভারি হয়ে আসছিল। আমায় ক্ষমা করে দিস রে—তোর কাফি অপরাধী ছিল, কিন্তু বেইমান ছিল না।</p>
+        <div class="memory-card apology">
+            <h2>ক্ষমা করো এই gাধা ভাইটাকে...</h2>
+            <p>আমি জানি গত সপ্তাহের ব্যবহার তোমাকে ব্যথিত করেছে। আমার শাসনের পেছনে লুকিয়ে থাকা অযোগ্য ভালোবাসা যদি তোমাকে কষ্ট দিয়ে থাকে, তবে দোহাই তোমার—কাফিকে ভুল বুঝো না। আমি হয়তো প্রকাশের ধরণ জানি না, কিন্তু তোমার সম্মান আগলে রাখাকেই জীবনের শ্রেষ্ঠ নেয়ামত মানি।</p>
         </div>
 
-        <!-- Intro -->
         <div class="memory-card">
-            <h2>ক্ষমা করো এই গাধা ভাইটাকে...</h2>
-            <p>আমি জানি গত সপ্তাহের ব্যবহার তোমাকে ব্যথিত করেছে। আমার শাসনের পেছনে লুকিয়ে থাকা অযোগ্য ভালোবাসা যদি তোমাকে কষ্ট দিয়ে থাকে, তবে দোহাই তোমার—কাফিকে ভুল বুঝো না। আমি তোমার সম্মান আগলে রাখাকেই জীবনের শ্রেষ্ঠ নেয়ামত মানি।</p>
-        </div>
-
-
-        <!-- The Wrist Memory -->
-        <div class="memory-card">
-            <h2>অদৃশ্য সেই চিহ্ন</h2>
+            <h2>কবজির অদৃশ্য স্মৃতি</h2>
             <div class="mark-box">
-                <p>"ব্যথাটা মুছে গেছে ঠিকই,<br>কিন্তু হাতের পাতার সেই <span class="highlight">অদৃশ্য দাগটা</span><br>আজও রূপকথা হয়ে ধমনীতে মিশে আছে।"</p>
+                <p>"ব্যথাটা মুছে গেছে ঠিকই,<br>কিন্তু কবজির ওপর তোমার দেওয়া সেই <span class="highlight">অদৃশ্য দাগটা</span><br>আজও রূপকথা হয়ে আমার ধমনীতে মিশে আছে।"</p>
             </div>
-            <p style="font-size: 0.9rem; font-style: italic;">সেই ফিতা বাঁধার দিনগুলোর মায়া কি এই ৭ দিনের ব্লকে হারানো সম্ভব? কোনোদিন না।</p>
+            <p style="font-size: 1rem; font-style: italic; text-align: center; opacity: 0.7;">সেই ফিতা বাঁধার দিনগুলোর মায়া কি এই ৭ দিনের ব্লকে হারানো সম্ভব?</p>
         </div>
 
-        <!-- Food Connection -->
+        <div class="heart-pulse">❤️</div>
+
         <div class="memory-card">
             <h2>ভাতের লোকমা ও আত্মার টান</h2>
             <p>লোহাগাড়ার সেই ২০টি দিন... তুমি যখন আমায় নিজ হাতে ভাত খাইয়ে দিতে, আমি শুধু অন্ন গ্রহণ করতাম না, আমি পরম শ্রদ্ধায় আল্লাহর দেওয়া এই শ্রেষ্ঠ নেয়ামত অনুভব করতাম। সেই হাতের পরশ ছাড়া আমার চট্টগ্রামের প্রতিটি রাত আজ কুয়াশা ভরা খাগড়াছড়ির পাহাড়ের মতো শান্ত কিন্তু রক্তাক্ত।</p>
         </div>
 
-        <!-- Counter & Closing -->
-        <div class="memory-card">
+        <div class="memory-card highlight-card">
             <h2>১ মাস পূর্ণতা...</h2>
-            <p>৭ দিনের স্তব্ধতা শেষে আজ আমরা আমাদের এক মাসের মায়ার দোরগোড়ায়। বিশ্বাস করো, ব্লকিং লিস্টের ওই নীরব দেওয়াল দিয়ে তোমার কলিজার হাহাকার মোছা অসম্ভব</p>
+            <p style="text-align: center;">৭ দিনের স্তব্ধতা শেষে আজ আমরা আমাদের এক মাসের মায়ার দোরগোড়ায়। বিশ্বাস করো, ব্লকিং লিস্টের ওই নীরব দেওয়াল আমাদের কলিজার হাহাকার মোছা অসম্ভব।</p>
         </div>
 
-        <!-- Counter & Closing -->
         <div class="memory-card">
             <h2>১৭ জানুয়ারির শপথ</h2>
-            <p>আজ শনিবার এই বিকাল ০৪:২১ । বুক ফেটে আমার কলিজাটা তোমার কাছে ছুটে যেতে চাইছে। মনে রেখো কলিজা— <span class="highlight">তুমিই প্রথম এবং তুমিই শেষ।</span> আমার অযোগ্যতা আমায় হয়তো কথা বলতে দেয় না, কিন্তু আল্লাহর কাছে করা আমার চোখের পানি কোনোদিন মিথ্যা হবে না।</p>
+            <p>আজকের সূর্য ডোবার আগে লোহাগাড়া থেকে চট্টগ্রামের এই নীরবতা ভাঙবে তো? মনে রেখো কলিজা— <span class="highlight">তুমিই প্রথম এবং তুমিই শেষ।</span> আমার অযোগ্যতা আমায় হয়তো কথা বলতে দেয় না, কিন্তু আল্লাহর কাছে করা আমার চোখের পানি কোনোদিন মিথ্যা হবে না।</p>
         </div>
 
         <footer>
             প্রার্থনা আর ধৈর্যের মাঝে বেঁচে থাকুক এই হারিয়ে যাওয়া রূপকথা...<br>
-            Sabr | Prayer | Noha-Kafi
+            Sabr | Dua | 19-12-25
         </footer>
     </div>
 
@@ -190,7 +162,7 @@ p {
                 document.getElementById("pass-gate").style.display = "none";
                 document.getElementById("main-content").style.display = "block";
             } else {
-                alert("আপনার হৃদয়ের সঠিক তারিখ দিন! (১৯ ডিসেম্বর - দিন/মাস)");
+                alert("আপনার হৃদয়ের সঠিক তারিখ দিন! (১৯ ডিসেম্বর)");
             }
         }
     </script>
